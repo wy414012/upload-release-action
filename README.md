@@ -217,15 +217,14 @@ jobs:
 
 ### Permissions
 
-This actions requires writes access to the release. If you are using [granular permissions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions)
-in your workflow, you will need to add the `contents: write` permission to the token:
+This actions requires writes access to the release. If you are encountering "resource not accessible by integration" errors, you will need to add the `contents: write` permission to the token using [granular permissions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions):
 
 ```yaml
 permissions:
   contents: write
 ```
 
-By default, these permissions are granted on `push` but not on `pr` - and you should be wary of adding them, as they allow [wide access to changing the entire repo's contents](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-contents)
+By default, these permissions are granted on `push` but not on `pr` - and you should be wary of adding them to workflows that run on pr, as they allow [wide access to changing the entire repo's contents](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-contents)
 
 ## Releasing
 
